@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Рейтинг</h1>
+{% for obj_rate in page_obj %}
+    <ul>
+        <li>{{obj_rate.name}} </li>
+        <li>{{obj_rate.text}} </li>
+        <!-- <li>{{obj_rate.date}} </li> -->
+        <li>{{obj_rate.get_avg_rate|floatformat:1}} </li>
+    </ul>
+    <a href="detail/{{ obj_rate.id }}">Открыть</a>
+    <h1>_____________________</h1>
+{% endfor %}
+
+{% if page_obj.has_previous %}
+<a href="?page={{ page_obj.previous_page_number}}">Назад</a>
+{% endif %}
+<span>Страница {{page_obj.number }} из {{ page_obj.paginator.num_pages }}</span>
+
+{% if page_obj.has_next %}
+<a href="?page={{ page_obj.next_page_number}}">Вперед</a>
+{% endif %}
+{% endblock %}

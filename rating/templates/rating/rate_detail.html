@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>{{object}}</h1>
+
+    <ul>
+        <li>{{object.name}}</li>
+        <li>{{object.get_avg_rate|floatformat:1}}</li>
+        <li>{{object.text}}</li>
+    </ul>
+    {% if not is_user %}
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Оценить">
+    </form>
+    {% endif %}
+{% endblock %}

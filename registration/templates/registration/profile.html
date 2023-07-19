@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+    <h1>{{user.username}}</h1>
+
+
+    <h1>Мои оценки</h1>
+
+    {% for rate in users_rate %}
+        {% for one in rate.estimate_set.all %}
+        <h1>{{ one }}</h1>
+        {% endfor %}
+        <h3>Оценка {{ rate.rating }}</h3>
+        <h1>________________</h1>
+    {% endfor %}
+{% endblock %}

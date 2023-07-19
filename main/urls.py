@@ -15,7 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from rating import views
+from registration.views import RegistrView, LoginView_, ProfileView, LogoutSystemView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('detail/<int:pk>/', views.RatingDetail.as_view(), name='detail'),
+    path('forms/', views.SimpleView.as_view()),
+    path('', views.RatingListView.as_view(), name='based'),
+    path('registr/', RegistrView.as_view()),
+    path('login/', LoginView_.as_view(), name='login'),
+    path('accounts/profile/', ProfileView.as_view()),
+    path('logout/', LogoutSystemView.as_view(), name='logout_path'),
 ]
